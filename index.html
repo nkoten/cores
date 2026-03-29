@@ -11,11 +11,15 @@
         margin: 0;
         padding: 0;
       }
+      body {
+        background: #000;
+      }
       body main {
         display: grid;
-        grid-template-columns: 45% 45%;
-        gap: 1rem;
-        padding: 1rem;
+        grid-template-columns: 50% 50%;
+        width: calc(100% - 2rem);
+        gap: calc(5% - 0rem);
+        padding: calc(5% - 1rem);
       }
     </style>
   </head>
@@ -23,6 +27,7 @@
     <main id="main"></main>
 
     <script type="module">
+      import { oList } from "./assets/helpers.js";
       import { themes } from "./themes.js";
 
       const template = (arg) => {
@@ -32,7 +37,8 @@
           background: ${arg.c1};
           color: ${arg.text};
           width: 170px;
-          height: 400px;
+          width: 100%;
+          aspect-ratio: 1/2;
           position: relative;
           border-radius: 1rem;
           overflow: hidden;
@@ -40,7 +46,7 @@
         #appbar${id} {
           background: ${arg.c0};
           width: 100%;
-          height: 25px;
+          height: 10%;
           position: absolute;
           top: 0;
           left: 0;
@@ -59,8 +65,23 @@
           background: ${arg.c1};
           width: 100%;
           height: 100%;
+          margin-top: 25px;
+          flex-flow: column;
+          align-items: center;
+          justify-content: center;
         }
-        template-tag, appbar, sidebar, main {
+        #card${id} {
+          background: ${arg.c2};
+          border-radius: 1rem;
+          flex-flow: column;
+          width: 75%;
+          aspect-ratio: 1.8/1;
+          margin: 0 auto;
+        }
+        #card-header${id} {
+          background: ${arg.c0};
+        }
+        template-tag, #appbar${id}, #sidebar${id}, #main${id}, #card${id}, #card${id} > #card-header${id} {
           display: flex;
         }
         `;
@@ -69,13 +90,24 @@
             <style>${style}</style>
             <appbar id="appbar${id}">${arg.id}</appbar>
             <sidebar id="sidebar${id}"></sidebar>
-            <main id="main${id}"></main>
+            <main id="main${id}">
+              ${[...Array(3)]
+                .map(
+                  (_) => `<card id="card${id}">
+                <header id="card-header${id}"></header>
+              </card>`,
+                )
+                .join("")}
+            </main>
           </template-tag>
         `;
       };
 
-      main.innerHTML += template(themes.rosePine);
-      main.innerHTML += template(themes.rosePine);
+      // using oList
+      // oList(themes).map((_) => (main.innerHTML += template(_)));
+
+      // using oMap
+      main.innerHTML += themes.oMap((_) => template(_)).join("");
     </script>
   </body>
 </html>
