@@ -20,10 +20,8 @@ export const themes = {
   nceo: {
     id: "NCéo",
     c0: "#191724", // 6, 5, 6 - 0, -2, 13
-    // c1: "#1f1d2a",
     c1: "#1f1d2e",
-    // c2: "#23212e",
-    c2: "#242231",
+    c2: "#232034",
     text: "#fff",
   },
   sammarco: {
