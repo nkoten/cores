@@ -1,34 +1,33 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
     <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-        body main {
-          display: grid;
-          grid-template-columns: 45% 45%;
-          gap: 1rem;
-          padding: 1rem;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body main {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        gap: 1rem;
+        padding: 1rem;
+      }
     </style>
   </head>
   <body>
-    <main id="main">
-      
-    </main>
+    <main id="main"></main>
 
-    <script>
-      const template = arg => {
-        const id = Math.ceil( Math.random() * 999999999 );
-        style = `
+    <script type="module">
+      import { themes } from "./themes.js";
+
+      const template = (arg) => {
+        const id = Math.ceil(Math.random() * 999999999);
+        const style = `
         #template${id} {
           background: ${arg.c1};
           color: ${arg.text};
@@ -72,21 +71,11 @@
             <sidebar id="sidebar${id}"></sidebar>
             <main id="main${id}"></main>
           </template-tag>
-        `
-      };
-
-      const themes = {
-        rosePine: {
-          id: "rosé-pine",
-          c0: "#191724",
-          c1: "#1f1d2e",
-          text: "#fff",
-        },
+        `;
       };
 
       main.innerHTML += template(themes.rosePine);
       main.innerHTML += template(themes.rosePine);
     </script>
-  
   </body>
 </html>
