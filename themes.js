@@ -2,7 +2,7 @@
  * --- themes --- */
 export const themes = {
   catpuccin: {
-    id: "catpuccin",
+    id: "catpuccin-tele",
     c0: "#151d27",
     c1: "#1d2633",
     c2: "#252f3d",
