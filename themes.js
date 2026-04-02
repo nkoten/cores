@@ -32,7 +32,7 @@ export const themes = {
     text: "#fff",
   },
   nlyh: {
-    id: "dracula",
+    id: "nlyh",
     c0: "#1f2335",
     c1: "#2f3345",
     c2: "#1d202f",
