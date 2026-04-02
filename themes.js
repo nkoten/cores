@@ -1,5 +1,5 @@
 /**
- * --- themes --- */
+ * - themes - */
 export const themes = {
   catpuccin: {
     id: "catpuccin-tele",
@@ -33,11 +33,21 @@ export const themes = {
   },
   nlyh: {
     id: "nlyh",
+    // c2: "#3f4355",
     c0: "#1f2335",
-    c1: "#2f3345",
-    c2: "#1d202f",
-    c2: "#3f4355",
+    c1: "#292e42",
+    c2: "#2f3345",
     text: "#fff",
+    // t0: "#1f2335",
+    // t1: "#2f3345",
+    // t2: "#1d202f",
+    // t3: "#292e42",
+    // t4: "#3b4261",
+    // c1: "#9ece6a",
+    // c2: "#7dcfff",
+    // c3: "#bb9af7",
+    // c4: "#565f89",
+    // c5: "#9d7cd8",
   },
   sammarco: {
     id: "Sammarco",
