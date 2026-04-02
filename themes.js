@@ -31,6 +31,14 @@ export const themes = {
     c2: "#232034",
     text: "#fff",
   },
+  nlyh: {
+    id: "dracula",
+    c0: "#1f2335",
+    c1: "#2f3345",
+    c2: "#1d202f",
+    c2: "#3f4355",
+    text: "#fff",
+  },
   sammarco: {
     id: "Sammarco",
     c0: "#1b1d22",
