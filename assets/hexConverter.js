@@ -27,9 +27,6 @@ export function hexConverter(valor, offsetR = 0, offsetG = -2, offsetB = 11) {
 }
 
 // Exemplos de uso:
-console.log(hexConverter(10)); // Padrão: #0a0815 (R:10, G:8, B:21)
-console.log(hexConverter("FF")); // Padrão: #FFFDFF (R:255, G:253, B:255 - B travou no FF)
-console.log(hexConverter("A0", 5, 5, 5)); // Customizado: #A5A5A5
 
 /**
  * Realiza cálculos hexadecimais diretos conforme o contexto solicitado.
@@ -65,13 +62,6 @@ export function calcularCorHex(valor, offR = "0", offG = "-2", offB = "11") {
     return `#${r}${g}${b}`.toUpperCase();
 }
 
-// --- Teste do cenário solicitado ---
-// Se valor = 19 (hex)
-// R = 19
-// G = 19 - 2 = 17
-// B = 19 + 11 = 24
-console.log(calcularCorHex(19)); // Resultado: #191724
-
 export function gerarCorContexto(valor, offR = 0, offG = -2, offB = 11) {
     // Converte a entrada (ex: "19" ou 19) para o valor numérico que ela representa em Hex
     const base = parseInt(valor.toString(), 16);
@@ -99,5 +89,5 @@ export function gerarCorContexto(valor, offR = 0, offG = -2, offB = 11) {
 // R: 25 + 0  = 25 -> Hex 19
 // G: 25 - 2  = 23 -> Hex 17
 // B: 25 + 11 = 36 -> Hex 24
-console.log(gerarCorContexto(19)); // RESULTADO: #191724
+// console.log(gerarCorContexto(19)); // RESULTADO: #191724
 
