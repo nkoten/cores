@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { hexConverter, calcularCorHex, gerarCorContexto } from "./assets/hexConverter.js";
+import { hexConverter } from "./assets/hexConverter.js";
 
 /**
  * --- Prototype Application ---
  * Buildless ESM React Component (N-Koten Pattern)
  */
 function App() {
-  const cor = gerarCorContexto( 19 );
+  const cor = hexConverter( 19 ).r;
   const nc11 = {
-    c0: gerarCorContexto(19),
-    c1: gerarCorContexto("1f"),
-    c2: gerarCorContexto("25"),
-    c3: gerarCorContexto("2b"),
-    c4: gerarCorContexto("30"),
+    c0: hexConverter(19).value,
+    c1: hexConverter("1f").value,
+    c2: hexConverter("25").value,
+    c3: hexConverter("2b").value,
+    c4: hexConverter("30").value,
   };
 
   return (

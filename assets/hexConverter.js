@@ -8,12 +8,13 @@
  */
 export function hexConverter(valor, offsetR = 0, offsetG = -2, offsetB = 11) {
   // 1. Converter entrada para número decimal (aceita hex ou decimal)
-  let numBase = typeof valor === "string" ? parseInt(valor, 16) : valor;
+  const numBase = parseInt(valor.toString(), 16);
 
   // Função interna para validar e formatar cada canal (0-255)
   const formatarCanal = (base, offset) => {
+    // Soma o offsset (11, -2, etc) diretamente ao valor base
     let resultado = base + offset;
-    // Garante que o valor esteja entre 0 e 255
+    // Garante que o valor esteja entre o range 00-FF (0 e 255)
     resultado = Math.max(0, Math.min(255, resultado));
     // Converte para hex, garante 2 dígitos e preenche com zero à esquerda se necessário
     return resultado.toString(16).padStart(2, "0");
@@ -23,7 +24,10 @@ export function hexConverter(valor, offsetR = 0, offsetG = -2, offsetB = 11) {
   const g = formatarCanal(numBase, offsetG);
   const b = formatarCanal(numBase, offsetB);
 
-  return `#${r}${g}${b}`.toUpperCase();
+  return( {
+    r, g, b,
+    value: `#${r}${g}${b}`.toUpperCase(),
+  } );
 }
 
 // Exemplos de uso:
