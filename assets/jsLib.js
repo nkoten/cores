@@ -18,7 +18,7 @@ Object.defineProperty(Object.prototype, "values", {
  *  */
 Object.defineProperty(Object.prototype, "mapValues", {
   value: function (callback) {
-    const objects = [...Object.values(this)];
+    /* const objects = [...Object.values(this)];
     const list = [];
 
     for (let i = 0; i < objects.length; i++) {
@@ -26,9 +26,9 @@ Object.defineProperty(Object.prototype, "mapValues", {
         list[i] = callback(objects[i], i, objects);
       }
     }
-
     // 5. Retornamos a nova coleção transformada
-    return list;
+    return list; */
+    return Object.values(this).map(callback);
   },
   enumerable: false, // Não aparece no for...in
   writable: true, // Permite alterar o valor depois
@@ -40,13 +40,9 @@ Object.defineProperty(Object.prototype, "mapValues", {
  *  */
 Object.defineProperty(Object.prototype, "mapKeys", {
   value: function (cb) {
-    const objects = [...Object.keys(this)];
-    const list = [];
-    for (let i = 0; i < objects.length; i++) {
-      if (i in objects) {
-        list[i] = cb(objects[i], i, objects);
-      }
-    }
-    return list;
+    return Object.values(this).map(callback);
   },
+  enumerable: false,
+  writable: true,
+  configurable: true,
 });
