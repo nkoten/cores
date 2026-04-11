@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import { hexColorGen } from "./assets/hexColorGen.js";
+import { oList } from "./assets/helpers.js";
+import { themes } from "./themes.js";
 
 /**
  * --- Prototype Application ---
@@ -22,6 +24,13 @@ function App() {
           </>
         ))}
       </div>
+      <main
+        className={`grid grid-cols-[50%_50%] w-[calc(100%_-_2rem)] gap-[calc(5%_-_0rem)] p-[calc(5%_-_1rem)]`}
+      >
+        {themes.oMap((_) => (
+          <ThemeTemplate arg={_} />
+        ))}
+      </main>
     </>
   );
 }
@@ -42,6 +51,45 @@ const ColorCard = ({ cor }) => {
   return (
     <>
       <p className={`bg-[${cor}]`}>{cor}</p>
+    </>
+  );
+};
+
+const ThemeTemplate = ({ arg }) => {
+  const id = crypto.randomUUID();
+  return (
+    <>
+      <template-tag
+        id={`template${id}`}
+        className={`flex relative bg-[${arg.c1}] text-[${arg.text}] w-full aspect-[1/2] rounded-4 overflow-hidden`}
+      >
+        <appbar
+          id={`appbar${id}`}
+          className={`flex bg-[${arg.c0}] w-full h-[10%] absolute top-0 left-0 items-center justify-center`}
+        >
+          {arg.id}
+        </appbar>
+        <sidebar
+          id={`sidebar${id}`}
+          className={`flex bg-[${arg.c0}] w-[25%] h-[calc(100%_-_25px) absolute top-[25px] left-0`}
+        ></sidebar>
+        <main
+          id={`main${id}`}
+          className={`flex gap-4 bg-[${arg.c1}] w-full h-full mt-[25px] flex-col items-center justify-center`}
+        >
+          {[...Array(3)].map((_) => (
+            <card
+              id={`card${id}`}
+              className={` flex
+              bg-[${arg.c0}] rounded-4 flex-col w-[75%] aspect-[1.8/1] m[0_auto]
+              bg-[${arg.c2}]
+              `}
+            >
+              <header id={`flex card-header${id}`}></header>
+            </card>
+          ))}
+        </main>
+      </template-tag>
     </>
   );
 };
