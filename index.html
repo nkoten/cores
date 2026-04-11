@@ -46,7 +46,8 @@
       import { themes } from "./themes.js";
 
       const template = (arg) => {
-        const id = Math.ceil(Math.random() * 999999999);
+        const id = crypto.randomUUID();
+
         const style = `
         #template${id} {
           background: ${arg.c1};
