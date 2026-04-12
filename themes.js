@@ -70,4 +70,10 @@ export const themes = {
     c2: "#212329",
     text: "#fff",
   },
+  ubuntuc: {
+    id: "Ubuntu-C",
+    c0: "#15161e",
+    c1: "#1a1b26",
+    c2: "#22232e",
+  },
 };

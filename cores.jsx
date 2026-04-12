@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-      <AppBar title="N-Koten Cores" bg={nc11.c0} />
+      <AppBar title="N-Koten Cores" bg={nc11.c0} pos="sticky" />
       <div className="flex flex-col items-center justify-center min-h-screen gap-6">
         <p className="text-slate-400">hexColorGen( 19 ) =&gt; {cor}</p>
 
@@ -35,11 +35,13 @@ function App() {
   );
 }
 
-const AppBar = ({ title, bg }) => {
+const AppBar = ({ title, bg, pos }) => {
   return (
     <>
       <appbar
-        className={`flex items-center justify-center p-8 bg-[${bg && bg}] w-full h-[81px]`}
+        className={`flex items-center justify-center p-8 bg-[${bg && bg}] w-full h-[81px]
+          ${pos && `${pos} top-0 left-0 z-[100]`} 
+        `}
       >
         {title && <p className="text-red-400 text-4xl font-black">{title}</p>}
       </appbar>
@@ -57,35 +59,32 @@ const ColorCard = ({ cor }) => {
 
 const ThemeTemplate = ({ arg }) => {
   const id = crypto.randomUUID();
+  const [Width, Height] = [window.innerWidth, window.innerHeight];
+
   return (
     <>
       <template-tag
-        id={`template${id}`}
-        className={`flex relative bg-[${arg.c1}] text-[${arg.text}] w-full aspect-[1/2] rounded-4 overflow-hidden`}
+        className={`flex flex-col relative bg-[${arg.c1}] text-[${arg.text}] w-[${Width / 3 + "px"}] h-[${Width / 2 + "px"}] max-h-[${Width / 2 + "px"}] rounded-[1.5rem] overflow-hidden`}
       >
         <appbar
-          id={`appbar${id}`}
-          className={`flex bg-[${arg.c0}] w-full h-[10%] absolute top-0 left-0 items-center justify-center`}
+          className={`flex sticky top-0 left-0 bg-[${arg.c0}] w-full h-[10%] absolute top-0 left-0 items-center justify-center`}
         >
           {arg.id}
         </appbar>
         <sidebar
-          id={`sidebar${id}`}
-          className={`flex bg-[${arg.c0}] w-[25%] h-[calc(100%_-_25px) absolute top-[25px] left-0`}
+          className={`flex flex-col absolute top-0 left-0 w-[25%] h-full bg-[${arg.c0}]`}
         ></sidebar>
         <main
-          id={`main${id}`}
-          className={`flex gap-4 bg-[${arg.c1}] w-full h-full mt-[25px] flex-col items-center justify-center`}
+          className={`flex gap-4 bg-[${arg.c1}] w-full h-full py-[3rem] flex-col items-center justify-center overflow-y-scroll no-scrollbar`}
         >
-          {[...Array(3)].map((_) => (
+          {[...Array(5)].map((_) => (
             <card
-              id={`card${id}`}
               className={` flex
-              bg-[${arg.c0}] rounded-4 flex-col w-[75%] aspect-[1.8/1] m[0_auto]
-              bg-[${arg.c2}]
+                bg-[${arg.c0}] rounded-4 flex-col w-[75%] aspect-[1.8/1] m[0_auto]
+                bg-[${arg.c2}]
               `}
             >
-              <header id={`flex card-header${id}`}></header>
+              <header id={`flex `}></header>
             </card>
           ))}
         </main>
