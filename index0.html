@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      :root {
+        --nc-0: #191724;
+        --nc-1: #1f1d2e;
+
+        // 0 => ( 0 - 2 ) => ( 0 + 11 )
+        --nc11-0: #191724;
+        --nc11-1: #1f1d2a;
+        --nc11-2: #252330;
+
+        // 0 => ( 0 - 2 ) => ( 0 + 15 )
+        --nc15-0: #191728;
+        --nc15-1: #1f1d2e;
+        --nc15-2: #252334
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #000;
+      }
+      body main {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        width: calc(100% - 2rem);
+        gap: calc(5% - 0rem);
+        padding: calc(5% - 1rem);
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main"></main>
+
+    <script type="module">
+      import { oList } from "./assets/helpers.js";
+      import { themes } from "./themes.js";
+
+      const template = (arg) => {
+        const id = crypto.randomUUID();
+
+        const style = `
+        #template${id} {
+          background: ${arg.c1};
+          color: ${arg.text};
+          width: 170px;
+          width: 100%;
+          aspect-ratio: 1/2;
+          position: relative;
+          border-radius: 1rem;
+          overflow: hidden;
+        }
+        #appbar${id} {
+          background: ${arg.c0};
+          width: 100%;
+          height: 10%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          align-items: center;
+          justify-content: center;
+        }
+        #sidebar${id} {
+          background: ${arg.c0};
+          width: 25%;
+          height: calc( 100% - 25px );
+          position: absolute;
+          top: 25px;
+          left: 0;
+        }
+        #main${id} {
+          background: ${arg.c1};
+          width: 100%;
+          height: 100%;
+          margin-top: 25px;
+          flex-flow: column;
+          align-items: center;
+          justify-content: center;
+        }
+        #card${id} {
+          background: ${arg.c2};
+          border-radius: 1rem;
+          flex-flow: column;
+          width: 75%;
+          aspect-ratio: 1.8/1;
+          margin: 0 auto;
+        }
+        #card-header${id} {
+          background: ${arg.c0};
+        }
+        template-tag, #appbar${id}, #sidebar${id}, #main${id}, #card${id}, #card${id} > #card-header${id} {
+          display: flex;
+        }
+        `;
+        return `
+          <template-tag id="template${id}">
+            <style>${style}</style>
+            <appbar id="appbar${id}">${arg.id}</appbar>
+            <sidebar id="sidebar${id}"></sidebar>
+            <main id="main${id}">
+              ${[...Array(3)]
+                .map(
+                  (_) => `<card id="card${id}">
+                <header id="card-header${id}"></header>
+              </card>`,
+                )
+                .join("")}
+            </main>
+          </template-tag>
+        `;
+      };
+
+      // using oList
+      // oList(themes).map((_) => (main.innerHTML += template(_)));
+
+      // using oMap
+      main.innerHTML += themes.oMap((_) => template(_)).join("");
+    </script>
+  </body>
+</html>
