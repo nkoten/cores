@@ -12,7 +12,7 @@ export default function SideBar({ children }) {
 
 export const SideBarHeader = ({ children }) => {
   return (
-    <sidebar-header className="absolute top-0 left-0 flex w-full h-[81px] bg-slate-300">
+    <sidebar-header className="sticky top-0 left-0 flex flex-col items-center justify-center w-full h-[81px] ">
       {children}
     </sidebar-header>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { hexColorGen } from './assets/hexColorGen.js';
 import { oList } from './assets/helpers.js';
 import { themes } from './themes.js';
@@ -19,14 +20,31 @@ function App() {
 
   return (
     <>
-      <AppBar title="N-Koten Cores" bg={nc11.c0} pos="sticky" />
-      <SideBar>
-        <SideBarHeader>header</SideBarHeader>
-        <SideBarTile>tile</SideBarTile>
+      <HashRouter>
+        <AppBar title="N-Koten Cores" bg={nc11.c0} pos="sticky" />
+        <SideBar>
+          <SideBarHeader>C</SideBarHeader>
+          <SideBarTile>
+            <Link to="/cores">tile</Link>
+            <Link to="/colorcard">card</Link>
+            <Link to="/appbar">appbar</Link>
+          </SideBarTile>
 
-        <SideBarFooter>sair</SideBarFooter>
-      </SideBar>
+          <SideBarFooter>sair</SideBarFooter>
+        </SideBar>
+        <Routes>
+          <Route path="/cores" element={<CoresPage />} />
+          <Route path="/colorcard" element={<ColorCard />} />
+          <Route path="/appbar" element={<AppBar />} />
+        </Routes>
+      </HashRouter>
+    </>
+  );
+}
 
+export function CoresPage({}) {
+  return (
+    <>
       <div className="flex flex-col items-center justify-center min-h-screen gap-6">
         <p className="text-slate-400">hexColorGen( 19 ) =&gt; {cor}</p>
 
