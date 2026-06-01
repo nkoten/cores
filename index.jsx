@@ -2,6 +2,8 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { Button } from './components/Button.jsx';
+import SideBarTile from './components/ui/SideBarTile.jsx';
+import SideBar, { SideBarHeader } from './components/layout/SideBar.jsx';
 
 const Home = () => (
   <div className="p-8">
@@ -33,6 +35,11 @@ function App() {
           About
         </Link>
       </nav>
+      <SideBar className="">
+        <SideBarHeader>header</SideBarHeader>
+        <SideBarTile>tile</SideBarTile>
+      </SideBar>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -42,3 +49,4 @@ function App() {
 }
 
 createRoot(document.getElementById('app_root')).render(<App />);
+

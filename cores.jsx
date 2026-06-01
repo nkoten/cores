@@ -1,8 +1,14 @@
-import React, { useState } from "react";
-import { createRoot } from "react-dom/client";
-import { hexColorGen } from "./assets/hexColorGen.js";
-import { oList } from "./assets/helpers.js";
-import { themes } from "./themes.js";
+import React, { useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { hexColorGen } from './assets/hexColorGen.js';
+import { oList } from './assets/helpers.js';
+import { themes } from './themes.js';
+
+import SideBarTile from './components/ui/SideBarTile.jsx';
+import SideBar, {
+  SideBarFooter,
+  SideBarHeader,
+} from './components/layout/SideBar.jsx';
 
 /**
  * --- Prototype Application ---
@@ -14,6 +20,13 @@ function App() {
   return (
     <>
       <AppBar title="N-Koten Cores" bg={nc11.c0} pos="sticky" />
+      <SideBar>
+        <SideBarHeader>header</SideBarHeader>
+        <SideBarTile>tile</SideBarTile>
+
+        <SideBarFooter>sair</SideBarFooter>
+      </SideBar>
+
       <div className="flex flex-col items-center justify-center min-h-screen gap-6">
         <p className="text-slate-400">hexColorGen( 19 ) =&gt; {cor}</p>
 
@@ -64,7 +77,7 @@ const ThemeTemplate = ({ arg }) => {
   return (
     <>
       <template-tag
-        className={`flex flex-col relative bg-[${arg.c1}] text-[${arg.text}] w-[${Width / 3 + "px"}] h-[${Width / 2 + "px"}] max-h-[${Width / 2 + "px"}] rounded-[1.5rem] overflow-hidden`}
+        className={`flex flex-col relative bg-[${arg.c1}] text-[${arg.text}] w-[${Width / 3 + 'px'}] h-[${Width / 2 + 'px'}] max-h-[${Width / 2 + 'px'}] rounded-[1.5rem] overflow-hidden`}
       >
         <appbar
           className={`flex sticky top-0 left-0 bg-[${arg.c0}] w-full h-[10%] absolute top-0 left-0 items-center justify-center`}
@@ -96,10 +109,10 @@ const ThemeTemplate = ({ arg }) => {
 const cor = hexColorGen({ value: 19 }).r;
 const nc11 = {
   c0: hexColorGen({ value: 19 }).value,
-  c1: hexColorGen({ value: "1f" }).value,
-  c2: hexColorGen({ value: "25" }).value,
-  c3: hexColorGen({ value: "2b" }).value,
-  c4: hexColorGen({ value: "30" }).value,
+  c1: hexColorGen({ value: '1f' }).value,
+  c2: hexColorGen({ value: '25' }).value,
+  c3: hexColorGen({ value: '2b' }).value,
+  c4: hexColorGen({ value: '30' }).value,
 };
 
-createRoot(document.getElementById("app_root")).render(<App />);
+createRoot(document.getElementById('app_root')).render(<App />);
