@@ -10,6 +10,7 @@ import SideBar, {
   SideBarFooter,
   SideBarHeader,
 } from './components/layout/SideBar.jsx';
+import Device from './components/ui/Device.jsx';
 
 /**
  * --- Prototype Application ---
@@ -21,13 +22,14 @@ function App() {
   return (
     <>
       <HashRouter>
-        <AppBar title="N-Koten Cores" bg={nc11.c0} pos="sticky" />
+        <AppBar title="N-Koten Cores" bg={'#181611e'} pos="sticky" />
         <SideBar>
           <SideBarHeader>C</SideBarHeader>
           <SideBarTile>
             <Link to="/cores">tile</Link>
             <Link to="/colorcard">card</Link>
             <Link to="/appbar">appbar</Link>
+            <Link to="/device">device</Link>
           </SideBarTile>
 
           <SideBarFooter>sair</SideBarFooter>
@@ -36,9 +38,20 @@ function App() {
           <Route path="/cores" element={<CoresPage />} />
           <Route path="/colorcard" element={<ColorCard />} />
           <Route path="/appbar" element={<AppBar />} />
+          <Route path="/device" element={<DeviceView />} />
         </Routes>
       </HashRouter>
     </>
+  );
+}
+
+export function DeviceView({ ...props }) {
+  return (
+    <main className="flex flex-col gap-4 w-full h-[100dvh] flex-1 items-center justify-center">
+      <Device overlay="#18161e" layout="#1d1b23" ui="#232129" />
+      <Device overlay="#18161d" layout="#1d1b22" ui="#232128" />
+      <Device />
+    </main>
   );
 }
 
