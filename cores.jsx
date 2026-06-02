@@ -12,6 +12,17 @@ import SideBar, {
 } from './components/layout/SideBar.jsx';
 import Device from './components/ui/Device.jsx';
 
+const cores = {
+  "#16151D", // -1 +7
+  "#191724", // -2 +11
+
+  // ogx
+  "#09080d",
+  "#120f19",
+  "#1c1726",
+  "#493d65",
+};
+
 /**
  * --- Prototype Application ---
  * Buildless ESM React Component (N-Koten Pattern)
@@ -71,7 +82,7 @@ export function CoresPage({}) {
       <main
         className={`grid grid-cols-[50%_50%] w-[calc(100%_-_2rem)] gap-[calc(5%_-_0rem)] p-[calc(5%_-_1rem)]`}
       >
-        {themes.oMap((_) => (
+        {themes.mapValues((_) => (
           <ThemeTemplate arg={_} />
         ))}
       </main>
