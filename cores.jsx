@@ -12,16 +12,16 @@ import SideBar, {
 } from './components/layout/SideBar.jsx';
 import Device from './components/ui/Device.jsx';
 
-const cores = {
-  "#16151D", // -1 +7
-  "#191724", // -2 +11
+const cores = [
+  '#16151D', // -1 +7
+  '#191724', // -2 +11
 
   // ogx
-  "#09080d",
-  "#120f19",
-  "#1c1726",
-  "#493d65",
-};
+  '#09080d',
+  '#120f19',
+  '#1c1726',
+  '#493d65',
+];
 
 /**
  * --- Prototype Application ---
