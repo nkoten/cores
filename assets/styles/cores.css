@@ -9,4 +9,14 @@
   --nk-overlay: var(--base);
   --nk-layout: var(--nk-200);
   --nk-ui: var(--nk-400);
+
+  --deep-0: #121b25;
+  --deep-1: #19212f;
+  --deep-2: #20283d;
+  --deep-3: #29324c;
+
+  --cool-0: #1d242f;
+  --cool-1: #1d242f;
+  --cool-2: #2c3344;
+  --cool-3: #353c53;
 }
