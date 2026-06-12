@@ -10,6 +10,7 @@ import SideBar, {
   SideBarFooter,
   SideBarHeader,
 } from './components/layout/SideBar.jsx';
+import VSCodeCard from './components/ui/VSCodeCard.jsx';
 import Device from './components/ui/Device.jsx';
 
 const cores = [
@@ -57,8 +58,42 @@ function App() {
 }
 
 export function DeviceView({ ...props }) {
+  const nks_th = [
+    '#12121f',
+    '#151522', // b1
+    '#181825', // a1 b2 c1
+    '#1b1b28', // c2
+    '#1c1c29', // a2
+    '#1e1e2b',
+    '#22222f ',
+  ];
+  const termux_ths = [
+    { id: 'dark', th: ['#16151d', '#16151d', '#181824', '#3d3e5d'] },
+    // {id: 't', th: ['#1c1c29', '#1e1d2d']}
+  ];
+
+  const themes = [
+    // --- nks
+    { id: 'nks_darker', th: [nks_th[1], nks_th[1], nks_th[2], nks_th[6]] },
+    { id: 'nks_dark', th: [nks_th[2], nks_th[2], nks_th[4], nks_th[6]] },
+    { id: 'nks', th: [nks_th[2], nks_th[2], nks_th[5], nks_th[5]] },
+    // ---
+    { id: 'termux', th: [...termux_ths[0].th] },
+  ];
+
   return (
-    <main className="flex flex-col gap-4 w-full h-[100dvh] flex-1 items-center justify-center">
+    <main className="flex flex-col gap-4 w-full h-full min-h-[100dvh] flex-1 items-center justify-center">
+      <theme-gallery className="flex flex-col w-[70%] gap-4 p-8">
+        {themes &&
+          themes.map((t, i) => (
+            <VSCodeCard
+              bgAction={t.th[0]}
+              bgSidebar={t.th[1]}
+              bgCode={t.th[2]}
+              bgFooter={t.th[3]}
+            />
+          ))}
+      </theme-gallery>
       <Device overlay="#18161e" layout="#1d1b23" ui="#232129" />
       <Device overlay="#18161d" layout="#1d1b22" ui="#232128" />
       <Device />
